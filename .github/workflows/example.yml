@@ -1,0 +1,21 @@
+name: Example Workflow
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      EXAMPLE_VAR: "This is an example variable"
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run a script with secret and variable
+      run: |
+        echo "The secret is ${{ secrets.MY_SECRET }}"
+        echo "The variable is $EXAMPLE_VAR"
+      env:
+        MY_SECRET: ${{ secrets.MY_SECRET }}
