@@ -16,6 +16,9 @@ jobs:
     - name: Run a script with secret and variable
       run: |
         echo "The secret is ${{ secrets.MY_SECRET }}"
-        echo "The variable is $EXAMPLE_VAR"
+        echo "The variable is $ "
       env:
         MY_SECRET: ${{ secrets.MY_SECRET }}
+
+    - name: Use GitHub variable in a step
+      run: echo "The GitHub variable is ${{ vars.MY_VARIABLE }}"
